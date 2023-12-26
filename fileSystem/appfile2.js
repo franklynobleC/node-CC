@@ -1,7 +1,7 @@
 const { unlink, watch, open, mkdir } = require('fs/promises')
-const { join } = require('path')
+
 const { appendFile, fs, close, rename } = require('node:fs')
-const { error } = require('console')
+
 const testFile = async () => {
   const CREATE_FILE = 'create the file'
   const DELETE_FILE = 'delete the file'
@@ -38,7 +38,7 @@ const testFile = async () => {
         }
         console.log(`Deleting  ${path}...`)
         await unlink(file)
-        console.log(`file  path successfully deleted ${path},${file}`)
+        console.log(`file was successfully deleted ${path},${file}`)
       } else {
         console.log('file does  not exist')
         return
@@ -59,7 +59,7 @@ const testFile = async () => {
             console.log('an Error Occurred', error)
           }
         }
-        console.log('file  Name changed', newPath)
+        console.log('file was  successfully renamed changed', newPath)
       })
     } catch (error) {
       console.log('error Occurred in catch  block', error)
@@ -74,8 +74,7 @@ const testFile = async () => {
       if (err) {
         console.log('error appending File', err)
       }
-      // file.close()
-      console.log('file Successfully  Added')
+      console.log('file was Successfully  Added')
       console.log(file)
     })
   }
