@@ -65,12 +65,13 @@ const benChmarkWriteData = async () => {
 
 benChmarkWriteData()
 let i = 0
+const numberOfBytes = 1000000
 const writeMany = () => {
-  while (i < 100000) {
+  while (i < numberOfBytes) {
     const buf = Buffer.from(` ${i}`, 'utf-8')
 
     //if  is  our  last write
-    if (i === 999999) {
+    if (i === numberOfBytes - 1) {
       return fileStream.end(buf)
     }
     i++
