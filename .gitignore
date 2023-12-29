@@ -1,0 +1,7 @@
+.trunk
+fileSystem/package-lock.json
+streams/read-big/fileDest.txt
+streams/read-big/testfile.txt
+streams/copy/text-copy.txt
+streams/copy/text-data.txt
+streams/write-many/testfile.txt
