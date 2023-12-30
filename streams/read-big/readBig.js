@@ -3,6 +3,7 @@ const fs = require('node:fs/promises')
 const readFStream = async () => {
   console.time('writeMany')
   let fileHandleRead = fs.open('testfile.txt', 'r')
+<<<<<<< HEAD
   const fileHandleWrite = fs.open('fileDest.txt', 'w')
   const dataStreamRead = (await fileHandleRead).createReadStream({
     highWaterMark: 64 * 1024
@@ -42,6 +43,17 @@ const readFStream = async () => {
   dataStreamWrite.on('drain', () => {
     dataStreamRead.resume()
     // console.log('drained,  write complete')
+=======
+
+  const dataStream = (await fileHandleRead).createReadStream()
+
+  // ** fileHandleStream  call  the   event 'data' on  the  stream  to be able to region-break-inside:
+
+  //NOTE: if 'data' event  is not called  on  the  stream,  it would  not read and  remain  on  pause Mode  **
+  dataStream.on('data', chunk => {
+    console.log('-----')
+    console.log(chunk)
+>>>>>>> parent of e2ad55c (readandwrite data checkis)
   })
   //this  event would emit Automatically, when  done reading
   dataStreamRead.on('end', () => {
