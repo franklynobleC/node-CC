@@ -9,8 +9,9 @@ class Decrypt extends Transform {
         chunk[i] = chunk[i] - 1
       }
     }
-    this.push(chunk)
-    callback()
+    // this.push(chunk)
+    //you can  use  callback  as well as  push(but callBack  is preferred)
+    callback(null, chunk)
   }
 }
 

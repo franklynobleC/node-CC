@@ -7,10 +7,13 @@ class Encrypt extends Transform {
     for (let i = 0; i < chunk.length; i++) {
       if (chunk[i] !== 255) {
         chunk[i] = chunk[i] + 1
+        // console.log((await chunk[i].stat))
       }
     }
     this.push(chunk)
-    callback()
+    console.log(chunk)
+    //you can  use  callback  as well as  push(but callBack  is preferred)
+    callback(null, chunk)
   }
 }
 
