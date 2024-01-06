@@ -12,7 +12,6 @@ class Encrypt extends Transform {
         // console.log((await chunk[i].stat))
       }
 
-      // console.log(fs.stat(chunk.toString('utf-8')))
     }
     this.push(chunk)
 
@@ -21,32 +20,19 @@ class Encrypt extends Transform {
   }
 }
 
-// ;(async () => {
-//   const readFileHandle = await fs.open('read.txt', 'r')
-//   const writeFileHandle = await fs.open('write.txt', 'w')
-
-//   const readStream = readFileHandle.createReadStream()
-//   const writeStream = writeFileHandle.createWriteStream()
-
-//   const encrypt = new Encrypt()
-
-//   //pipe  through  read  stream  into  writeStream
-//   readStream.pipe(encrypt).pipe(writeStream)
-// })()
-
 const streamData = async () => {
   const readFileHandle = await fs.open('encryptedFile.txt', 'r')
   const writeFileHandle = await fs.open('write.txt', 'w')
 
- const readStream = readFileHandle.createReadStream()
+  const readStream = readFileHandle.createReadStream()
   const writeStream = writeFileHandle.createWriteStream()
+
   // fs.stat(readStream, (err, stat) => {
   //   if (err) {
   //     console.log('error  printing')
-  //   }
+  //  }
   //   // console.log('from Data', stat)
   // })
-
   const encrypt = new Encrypt()
 
   //pipe  through  read  stream  into  writeStream
