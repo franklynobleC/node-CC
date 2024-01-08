@@ -5,9 +5,9 @@ const path = require('path')
 
 const server = net.createServer(() => {})
 
-let fileHandle, fileStream
 server.on('connection', async socket => {
   console.log('New connection!')
+  let fileHandle, fileStream
 
   socket.on('data', async data => {
     if (!fileHandle) {
@@ -24,9 +24,12 @@ or handling logic. */
       fileHandle = await fs.open(`storage/${fileName}`, 'w')
       fileStream = fileHandle.createWriteStream() // the  stream  to  write to
 
+      /* The line `fileHandle.write(data.subarray(indexOfDivide + 7))` is writing a portion of the
+      received data to the file represented by `fileHandle`. */
       //write to  our Destination  file
-      // here  we a re writing  the entire file  with the headers
+      // here  we a re writing  the entire file  but discard headers
 
+      // write   file but, discard  the  headers
 
       fileHandle.write(data.subarray(indexOfDivide + 7))
 
