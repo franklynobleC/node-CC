@@ -47,11 +47,24 @@ server.on('request', async (request, response) => {
   }
   if (request.url === '/user' && request.method === 'PUT') {
     response.setHeader('Content-Type', 'application/json')
-    response.statusCode = 200
+    response.statusCode = 401
     bodyResp = {
-      messageD: 'updating User Info .....'
+      messageD: 'you first Have to Login .....'
     }
     response.end(JSON.stringify({ message: bodyResp }))
+  }
+
+  // upload  route
+  if (request.url === '/upload?image' && request.method === 'POST') {
+    const fileHandle = await fs.open('./storage/spices.jpg', 'w')
+    const fileStream = fileHandle.createWriteStream()
+
+    response.setHeader('Content-Type', 'application/json')
+    request.pipe(fileStream)
+
+    request.on('end', () => {
+      response.end(JSON.stringify({ message: 'File SuccessFully Uploaded' }))
+    })
   }
 })
 
