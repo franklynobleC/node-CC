@@ -7,7 +7,8 @@ class Butter {
  "get/": () => {...},
  "post/upload": () => {...}
  }
- * @memberof Butter
+//  *
+// @memberof Butter
  this.routes['get/']()
 *
  */
@@ -29,7 +30,7 @@ class Butter {
 
       //set the Status Code Of the Response
       res.status = code => {
-        res.statusCode = code
+        res.statusCode =  code
         return res
       }
 
